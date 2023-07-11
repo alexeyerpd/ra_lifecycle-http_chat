@@ -1,0 +1,90 @@
+{
+    "root": true,
+    "extends": [
+        "@gravity-ui/eslint-config",
+        "@gravity-ui/eslint-config/client",
+        "@gravity-ui/eslint-config/prettier"
+    ],
+    "plugins": ["simple-import-sort", "@getify/proper-arrows"],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "project": "./src/tsconfig.json"
+    },
+    "env": {
+        "node": true
+    },
+    "rules": {
+        "import/order": "off",
+        "valid-jsdoc": "off",
+        "react/react-in-jsx-scope": 0,
+        "react-hooks/exhaustive-deps": "error",
+        "new-cap": 0,
+        "indent": 1,
+        "prefer-arrow-callback": "off",
+        "no-restricted-syntax": [
+            "error",
+            {
+                "selector": "ImportDeclaration[source.value='react'] :matches(ImportNamespaceSpecifier:not([local.name='React']), ImportDefaultSpecifier, ImportSpecifier)",
+                "message": "Please use import * as React from 'react' instead."
+            },
+            {
+                "selector": "JSXFragment>JSXOpeningFragment:not(:has(JSXIdentifier))",
+                "message": "Please use React.Fragment instead."
+            }
+        ],
+        "simple-import-sort/imports": "error",
+        "simple-import-sort/exports": "error",
+        "import/first": "error",
+        "import/newline-after-import": "error",
+        "import/no-duplicates": "error",
+        "no-console": [
+            "warn",
+            {
+                "allow": ["warn", "error"]
+            }
+        ],
+        "@getify/proper-arrows/where": [
+            "error",
+            {
+                "global": false,
+                "global-declaration": true,
+                "export": true,
+                "property": false,
+                "trivial": false
+            }
+        ]
+    },
+    "overrides": [
+        {
+            "files": ["**/*.js", "**/*.ts", "**/*.tsx"],
+            "rules": {
+                "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
+                "simple-import-sort/imports": [
+                    "error",
+                    {
+                        "groups": [
+                            // `react` first, `next` second, then packages starting with a character
+                            ["^react$", "^next", "^[a-z]"],
+                            // Packages starting with `@`
+                            ["^@"],
+                            // Packages starting with `~`
+                            ["^~"],
+                            // Imports starting with `../`
+                            ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+                            // Imports starting with `./`
+                            ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+                            // Style imports
+                            ["^.+\\.s?css$"],
+                            // Side effect imports
+                            ["^\\u0000"]
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

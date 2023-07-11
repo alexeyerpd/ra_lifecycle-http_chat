@@ -1,0 +1,19 @@
+{
+    "presets": [
+        [
+            "@gravity-ui/babel-preset",
+            {
+                "env": {
+                    "modules": false
+                }, // defaults to {}
+                "runtime": {
+                    "useESModules": true
+                }, // defaults to {}
+                "typescript": true, // defaults to false
+                "react": {
+                    "runtime": "automatic"
+                } // defaults to {}
+            }
+        ]
+    ]
+}

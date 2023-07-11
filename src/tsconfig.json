@@ -1,0 +1,24 @@
+{
+  "extends": "../tsconfig.json",
+  "compileOnSave": true,
+  "compilerOptions": {
+    "module": "ESNext",
+    "outDir": "../dist",
+    "baseUrl": ".",
+    "paths": {
+      "components/*": ["components/*"],
+      "containers/*": ["containers/*"],
+      "styles/*": ["styles/*"],
+      "utils/*": ["utils/*"],
+      "ui/*": ["*"]
+    },
+    "lib": ["DOM", "DOM.Iterable", "ESNext", "WebWorker"],
+    "noUnusedParameters": false,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "checkJs": false,
+    "esModuleInterop": false
+  },
+  "include": ["**/*"],
+  "exclude": []
+}
