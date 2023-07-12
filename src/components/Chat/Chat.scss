@@ -1,0 +1,85 @@
+@use 'styles/variables';
+
+$block: '.#{variables.$ns}chat';
+
+#{$block} {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    max-width: 600px;
+    height: calc(100vh - 40px);
+    margin-inline: auto;
+
+    &__messages {
+        display: grid;
+        justify-items: start;
+        gap: 20px;
+
+        overflow-y: auto;
+    }
+
+    &__message {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 55%;
+        min-height: 60px;
+        padding: 5px;
+
+        font-size: 14px;
+
+        border: 1px solid #000;
+        border-radius: 10px;
+
+        &_self {
+            justify-self: end;
+        }
+    }
+
+    &__form {
+        position: relative;
+        margin-block-start: auto;
+    }
+
+    &__form-input {
+        width: 100%;
+        min-height: 60px;
+
+        padding: 15px;
+
+        border: 1px solid #000;
+    }
+
+    &__form-btn-submit {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+
+        padding: 0;
+
+        font-weight: 700;
+        font-size: 28px;
+
+        color: #0f0;
+
+        border: none;
+        border-radius: 50%;
+
+        background: none;
+
+        cursor: pointer;
+
+        &:hover {
+            background-color: #dedede;
+        }
+    }
+}
